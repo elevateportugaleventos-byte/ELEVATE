@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Principal -->
+  <title>ELEVATE — Eventos de Futebol em Portugal | Mostra o Teu Talento</title>
+  <meta name="description" content="ELEVATE é o maior evento de futebol para jovens talentos em Portugal. Mostra o teu jogo em Lisboa e Porto perante observadores, treinadores e clubes. Inscreve-te agora." />
+  <meta name="keywords" content="eventos de futebol, evento futebol Portugal, futebol jovens talentos, showcase futebol, evento futebol Lisboa, evento futebol Porto, oportunidade futebol, jovens jogadores futebol, ELEVATE Portugal, futebol scouting Portugal" />
+  <meta name="author" content="ELEVATE Portugal" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elevateportugal.pt/" />
+
+  <!-- Geo -->
+  <meta name="geo.region" content="PT" />
+  <meta name="geo.placename" content="Portugal" />
+
+  <!-- Open Graph (Facebook / WhatsApp / LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://elevateportugal.pt/" />
+  <meta property="og:title" content="ELEVATE — Eventos de Futebol em Portugal" />
+  <meta property="og:description" content="O evento que aproxima jovens talentos do futebol às oportunidades certas. Lisboa, 7 de Junho. Inscreve-te agora." />
+  <meta property="og:image" content="https://elevateportugal.pt/IMG_0097.jpg" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:site_name" content="ELEVATE Portugal" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ELEVATE — Eventos de Futebol em Portugal" />
+  <meta name="twitter:description" content="O evento que aproxima jovens talentos do futebol às oportunidades certas. Lisboa, 7 de Junho." />
+  <meta name="twitter:image" content="https://elevateportugal.pt/IMG_0097.jpg" />
+
+  <!-- JSON-LD: Organização -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ELEVATE Portugal",
+    "url": "https://elevateportugal.pt",
+    "logo": "https://elevateportugal.pt/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+351915444353",
+      "email": "elevateportugal.eventos@gmail.com",
+      "contactType": "customer support",
+      "areaServed": "PT",
+      "availableLanguage": "Portuguese"
+    },
+    "sameAs": [
+      "https://www.instagram.com/elevateportugal.ev/",
+      "https://www.tiktok.com/@elevate.portugal.ev"
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Evento Lisboa -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": "ELEVATE — Evento de Futebol Lisboa",
+    "description": "Evento de futebol para jovens talentos entre os 14 e os 19 anos. Mostra o teu jogo perante observadores, treinadores e clubes profissionais.",
+    "startDate": "2025-06-07",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Complexo Desportivo Carlos Queiroz",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lisboa",
+        "addressCountry": "PT"
+      }
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "ELEVATE Portugal",
+      "url": "https://elevateportugal.pt"
+    },
+    "url": "inscricao.html",
+    "image": "https://elevateportugal.pt/IMG_0097.jpg",
+    "sport": "Football"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <ul class="nav__links nav__links--left">
+        <li><a href="#sobre">PROJETO</a></li>
+        <li><a href="#evento">EVENTO</a></li>
+        <li><a href="#para-quem">PARA QUEM</a></li>
+        <li><a href="contactos.html">CONTACTOS</a></li>
+      </ul>
+      <a href="#" class="nav__logo">
+        <img src="logo.png" alt="ELEVATE" />
+      </a>
+      <ul class="nav__links nav__links--right">
+        <li><a href="inscricao.html" class="nav__cta">Inscreve-te</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#sobre" class="mobile-link">PROJETO</a></li>
+      <li><a href="#evento" class="mobile-link">EVENTO</a></li>
+      <li><a href="#para-quem" class="mobile-link">PARA QUEM</a></li>
+      <li><a href="contactos.html" class="mobile-link">CONTACTOS</a></li>
+      <li><a href="inscricao.html" class="mobile-link">Inscreve-te</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <canvas id="heroCanvas"></canvas>
+
+    <!-- CAMPO EM PERSPETIVA -->
+    <div class="hero__field">
+      <div class="field__surface">
+        <div class="field__stripe"></div>
+        <div class="field__stripe"></div>
+        <div class="field__stripe"></div>
+        <div class="field__stripe"></div>
+        <div class="field__line field__border"></div>
+        <div class="field__line field__halfway"></div>
+        <div class="field__circle"></div>
+        <div class="field__dot field__center-dot"></div>
+        <div class="field__box field__box--top"></div>
+        <div class="field__box field__box--bottom"></div>
+        <div class="field__goal field__goal--top"></div>
+        <div class="field__goal field__goal--bottom"></div>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__badge reveal-fade">
+        <span class="dot"></span> Eventos de Futebol &nbsp;·&nbsp; Portugal
+      </div>
+      <h1 class="hero__title reveal-up">
+        <span class="hero__title-brand">ELEVATE</span>
+        <span class="hero__title-line">MOSTRA O TEU JOGO</span>
+        <span class="hero__title-line gold">MUDA O TEU DESTINO</span>
+      </h1>
+      <div class="hero__actions reveal-up delay-3">
+        <a href="inscricao.html" class="btn btn--primary">Inscreve-te Agora</a>
+        <a href="#sobre" class="btn btn--ghost">Saber Mais</a>
+      </div>
+
+      </div>
+
+    <div class="hero__glow"></div>
+
+    <div class="hero__scroll">
+      <span>scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- DATAS -->
+  <section class="datas section" id="datas">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="label">Calendário</p>
+        <h2 class="section-title"><em>EVENTOS</em></h2>
+      </div>
+
+      <div class="datas__grid reveal-up delay-1">
+
+        <!-- EVENTO 2 — SPOILER PORTO (esquerda) -->
+        <div class="datas__card datas__card--soon">
+          <div class="datas__card-badge datas__card-badge--soon">Em Breve</div>
+          <div class="datas__card-top">
+            <div class="datas__date datas__date--blur">
+              <span class="datas__day">??</span>
+              <span class="datas__month">JUN</span>
+            </div>
+            <div class="datas__divider"></div>
+            <div class="datas__info">
+              <p class="datas__city">Porto</p>
+              <p class="datas__venue datas__venue--spoiler">Estamos a fechar o local. Fica atento.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENTO 1 — CONFIRMADO (centro) -->
+        <div class="datas__card datas__card--active">
+          <div class="datas__card-badge">Confirmado</div>
+          <div class="datas__card-top">
+            <div class="datas__date">
+              <span class="datas__day">07</span>
+              <span class="datas__month">JUN</span>
+            </div>
+            <div class="datas__divider"></div>
+            <div class="datas__info">
+              <p class="datas__city">Lisboa</p>
+              <p class="datas__venue">Complexo Desportivo Carlos Queiroz</p>
+            </div>
+          </div>
+          <a href="inscricao.html" class="datas__cta">Inscreve-te →</a>
+        </div>
+
+        <!-- EVENTO 3 — MISTÉRIO TOTAL (direita) -->
+        <div class="datas__card datas__card--mystery">
+          <div class="datas__coming-soon">COMING SOON</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre section" id="sobre">
+    <div class="container">
+      <div class="sobre__inner">
+        <div class="sobre__left">
+          <p class="label reveal-fade">O Projeto</p>
+          <h2 class="section-title reveal-up">
+            Mais do que um evento<br />
+            <em>Uma oportunidade real</em>
+          </h2>
+          <div class="sobre__visual reveal-up delay-2">
+            <div class="sobre__kit">
+              <img src="IMG_0097.jpg" alt="Equipamento ELEVATE" class="sobre__kit-img" />
+              <div class="sobre__kit-glow"></div>
+            </div>
+          </div>
+        </div>
+        <div class="sobre__right">
+          <p class="sobre__text reveal-up">
+            A <strong>ELEVATE</strong> nasceu para dar visibilidade a jovens jogadores de futebol que procuram uma oportunidade para mostrar o seu talento. Reunimos jogadores, observadores, treinadores e pessoas ligadas ao mundo do futebol num ambiente competitivo, organizado e pensado para destacar o potencial de cada atleta.
+          </p>
+          <div class="pillars reveal-up delay-2">
+            <div class="pillar">
+              <div class="pillar__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h4>Competição Real</h4>
+                <p>Ambiente próximo da avaliação profissional</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <div>
+                <h4>Observadores Presentes</h4>
+                <p>Acesso direto a quem pode abrir portas</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+              </div>
+              <div>
+                <h4>Captação de Conteúdo</h4>
+                <p>Registo profissional do teu desempenho</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO BAND -->
+  <section class="manifesto">
+    <div class="manifesto__track" id="marqueeTrack">
+      <div class="manifesto__set">
+        <span>ELEVATE</span>
+        <span class="gold-dot">·</span>
+        <span>MOSTRA O TEU JOGO</span>
+        <span class="gold-dot">·</span>
+        <span>OPORTUNIDADE</span>
+        <span class="gold-dot">·</span>
+        <span>MUDA O TEU DESTINO</span>
+        <span class="gold-dot">·</span>
+      </div>
+      <div class="manifesto__set">
+        <span>ELEVATE</span>
+        <span class="gold-dot">·</span>
+        <span>MOSTRA O TEU JOGO</span>
+        <span class="gold-dot">·</span>
+        <span>OPORTUNIDADE</span>
+        <span class="gold-dot">·</span>
+        <span>MUDA O TEU DESTINO</span>
+        <span class="gold-dot">·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTO -->
+  <section class="evento section" id="evento">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <p class="label">Formato do Evento</p>
+        <h2 class="section-title">Um dia<br /><em>Duas oportunidades</em></h2>
+        <p class="section-sub">Dois escalões. Dois momentos. Uma experiência que pode mudar o teu percurso.</p>
+      </div>
+
+      <div class="hero__stats reveal-fade" style="margin: 0 auto 56px; justify-content: center;">
+        <div class="stat">
+          <span class="stat__num" data-target="22">0</span>
+          <span class="stat__label">Atletas por Sessão</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num" data-target="3">0</span>
+          <span class="stat__label">Horas de Avaliação</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__num" data-target="2">0</span>
+          <span class="stat__label">Escalões por Evento</span>
+        </div>
+      </div>
+
+      <!-- SESSÕES -->
+      <div class="evento__sessions reveal-up">
+        <div class="evento__session-card">
+          <div class="evento__session-accent"></div>
+          <div class="evento__session-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span>Manhã</span>
+          </div>
+          <div class="evento__session-age">14 — 16 anos</div>
+          <div class="evento__duration">
+            <span class="duration-pill">3 horas</span>
+            <span class="duration-pill">22 atletas</span>
+          </div>
+        </div>
+
+        <div class="evento__session-card evento__session-card--gold">
+          <div class="evento__session-accent gold-accent"></div>
+          <div class="evento__session-time gold-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span>Tarde</span>
+          </div>
+          <div class="evento__session-age">17 — 19 anos</div>
+          <div class="evento__duration">
+            <span class="duration-pill">3 horas</span>
+            <span class="duration-pill">22 atletas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BENEFÍCIOS PARTILHADOS -->
+      <div class="evento__shared reveal-up">
+        <div class="evento__shared-card">
+          <p class="evento__shared-label">O que está incluído nas duas sessões</p>
+          <div class="evento__pillars">
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h4>Jogos de Alta Intensidade</h4>
+                <p>Jogos competitivos de formato reduzido</p>
+              </div>
+            </div>
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+              </div>
+              <div>
+                <h4>Observadores Presentes</h4>
+                <p>Acesso direto a quem pode abrir portas</p>
+              </div>
+            </div>
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <h4>Captação em Vídeo</h4>
+                <p>Registo profissional do teu desempenho</p>
+              </div>
+            </div>
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              </div>
+              <div>
+                <h4>Avaliação Individual</h4>
+                <p>Avaliação técnica e tática de cada atleta</p>
+              </div>
+            </div>
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+              </div>
+              <div>
+                <h4>Treinadores e Agentes</h4>
+                <p>Acesso direto a profissionais do futebol</p>
+              </div>
+            </div>
+            <div class="evento__pillar">
+              <div class="evento__pillar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 6h16M4 18h10"/></svg>
+              </div>
+              <div>
+                <h4>Portfólio do Atleta</h4>
+                <p>Conteúdo para partilhar e mostrar o teu talento</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section class="para-quem section" id="para-quem">
+    <div class="container">
+      <div class="para-quem__inner">
+        <div class="para-quem__left reveal-up">
+          <p class="label">Para Quem</p>
+          <h2 class="section-title">
+            Tens talento<br />
+            <em>Precisas do palco</em>
+          </h2>
+          <p class="para-quem__text">
+            Se tens entre 14 e 19 anos, jogas futebol e acreditas que mereces ser visto por quem conta, a ELEVATE foi criada para ti.
+          </p>
+          <a href="inscricao.html" class="btn btn--primary para-quem__btn--desktop">Reserva o Teu Lugar</a>
+        </div>
+        <div class="para-quem__right">
+          <div class="quem__grid">
+            <div class="quem__item reveal-up">
+              <div class="quem__num">01</div>
+              <h4>Jovens Jogadores</h4>
+              <p>14 a 19 anos com ambição de crescer no futebol</p>
+            </div>
+            <div class="quem__item reveal-up delay-1">
+              <div class="quem__num">02</div>
+              <h4>Atletas sem Clube</h4>
+              <p>Sem representação atual mas com vontade de mostrar o que valem</p>
+            </div>
+            <div class="quem__item reveal-up delay-2">
+              <div class="quem__num">03</div>
+              <h4>Jogadores em Transição</h4>
+              <p>À procura de um novo clube ou de subir de divisão</p>
+            </div>
+            <div class="quem__item reveal-up delay-3">
+              <div class="quem__num">04</div>
+              <h4>Talentos por Descobrir</h4>
+              <p>Com qualidade e dedicação, mas sem o contacto certo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="para-quem__cta para-quem__btn--mobile reveal-up">
+        <a href="inscricao.html" class="btn btn--primary">Reserva o Teu Lugar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="logo.png" alt="ELEVATE" class="footer__logo" />
+          <p>O evento que aproxima talento e oportunidade.</p>
+        </div>
+
+        <div class="footer__social">
+          <a href="https://www.instagram.com/elevateportugal.ev/" target="_blank" aria-label="Instagram" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@elevate.portugal.ev" target="_blank" aria-label="TikTok" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 ELEVATE. Todos os direitos reservados.</p>
+        <p class="footer__tag">ELEVATE — Mostra o Teu Jogo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
