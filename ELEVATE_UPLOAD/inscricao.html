@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscrição — ELEVATE Portugal</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #C9A84C; --gold-light: #E8C96A;
+    --black: #0A0A0A; --dark: #111111; --dark2: #1A1A1A;
+    --white: #FFFFFF; --gray: #888888;
+    --border: rgba(201,168,76,0.2);
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px; pointer-events: none; z-index: 0;
+  }
+  .container { max-width: 680px; margin: 0 auto; padding: 60px 24px 80px; position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 100vh; justify-content: center; }
+
+  /* LOGO */
+  .logo-bar { display: flex; align-items: center; margin-bottom: 48px; }
+  .logo-bar a { display: flex; align-items: center; text-decoration: none; }
+  .logo-bar img { height: 48px; width: auto; }
+
+  /* STEPS */
+  .steps { display: flex; align-items: center; margin-bottom: 32px; }
+  .step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; }
+  .step-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--dark2); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--gray); transition: all .3s; }
+  .step.active .step-circle { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .step.done .step-circle { background: rgba(201,168,76,.2); border-color: var(--gold); color: var(--gold); }
+  .step-label { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; white-space: nowrap; }
+  .step.active .step-label { color: var(--gold); }
+  .step-line { flex: 1; height: 1px; background: var(--border); margin-bottom: 18px; }
+
+  /* PÁGINA DE SESSÕES */
+  .evento-header { margin-bottom: 36px; }
+  .evento-label { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .evento-titulo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 9vw, 64px); line-height: .95; letter-spacing: 2px; margin-bottom: 10px; }
+  .evento-titulo .cidade { color: var(--white); }
+  .evento-titulo .data { color: var(--gold); }
+  .evento-divider { display: none; }
+  .evento-data { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: var(--gray); margin-top: 14px; }
+  .evento-data strong { color: var(--white); display: block; }
+  .evento-data span { display: block; }
+  .evento-dot { display: none; }
+
+  .sessoes-titulo { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 14px; letter-spacing: .3px; }
+
+  .sessoes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
+
+  .sessao-card {
+    background: var(--dark2);
+    border: 1.5px solid rgba(201,168,76,.4);
+    border-radius: 16px;
+    padding: 28px 22px;
+    cursor: pointer;
+    transition: all .25s;
+    text-decoration: none;
+    color: var(--white);
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(201,168,76,.08), inset 0 0 20px rgba(201,168,76,.03);
+  }
+  .sessao-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    background: rgba(201,168,76,.05);
+    box-shadow: 0 0 50px rgba(201,168,76,.2), 0 12px 40px rgba(201,168,76,.15), inset 0 0 30px rgba(201,168,76,.05);
+  }
+
+  .sessao-idade {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; line-height: 1;
+    color: var(--gold);
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .sessao-idade .anos { font-size: 28px; color: var(--white); font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+
+  .sessao-nome { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; }
+  .sessao-horario { font-size: 14px; color: var(--gold); font-weight: 500; }
+  .sessao-horario .sep { color: rgba(255,255,255,.3); margin: 0 4px; }
+
+  .sessao-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--gold);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-top: auto;
+  }
+
+  /* FORM PAGES */
+  .section-label { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+  .form-page { display: none; }
+  .form-page.active { display: block; }
+  .field { margin-bottom: 20px; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 8px; }
+  label .req { color: var(--gold); margin-left: 3px; }
+  label .opt { color: var(--gray); font-weight: 400; font-size: 12px; margin-left: 4px; }
+  input[type=text], input[type=email], input[type=tel], input[type=date], select {
+    width: 100%; background: var(--dark2); border: 1px solid rgba(255,255,255,.1); border-radius: 10px;
+    padding: 14px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif; color: var(--white);
+    outline: none; transition: border-color .2s; -webkit-appearance: none;
+  }
+  input[type=date]::-webkit-calendar-picker-indicator { filter: invert(.5); }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+  select option { background: var(--dark2); color: var(--white); }
+  input:focus, select:focus { border-color: var(--gold); background: rgba(201,168,76,.04); }
+  input.error, select.error { border-color: #E24B4A; }
+  .error-msg { font-size: 12px; color: #E24B4A; margin-top: 6px; display: none; }
+  .error-msg.show { display: block; }
+  .field-hint { font-size: 12px; color: var(--gray); margin-top: 6px; }
+
+  /* sessão seleccionada badge */
+  .sessao-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,.1); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 24px; }
+
+  /* Planos */
+  .plano-grid { display: flex; flex-direction: column; gap: 10px; }
+  .plano-card { background: var(--dark2); border: 1.5px solid rgba(255,255,255,.08); border-radius: 12px; padding: 16px 18px; cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 14px; }
+  .plano-card:hover { border-color: rgba(201,168,76,.4); }
+  .plano-card.selected { border-color: var(--gold); background: rgba(201,168,76,.06); }
+  .plano-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(255,255,255,.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+  .plano-card.selected .plano-radio { border-color: var(--gold); background: var(--gold); }
+  .plano-card.selected .plano-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--black); }
+  .plano-info { flex: 1; }
+  .plano-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .plano-desc { font-size: 12px; color: var(--gray); }
+  .plano-price { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--gold); }
+
+  /* Botões */
+  .btn-next, .btn-prev, .btn-submit { border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .2s; padding: 16px 32px; }
+  .btn-next, .btn-submit { background: var(--gold); color: var(--black); width: 100%; margin-top: 8px; }
+  .btn-next:hover, .btn-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-prev { background: transparent; color: var(--gray); border: 1px solid rgba(255,255,255,.1); }
+  .btn-prev:hover { color: var(--white); }
+  .btn-row { display: flex; align-items: center; margin-top: 24px; gap: 12px; }
+  .btn-row .btn-next { flex: 1; margin-top: 0; }
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .nota-pagamento { background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2); border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; font-size: 12px; color: #aaa; line-height: 1.7; }
+  .nota-pagamento strong { color: var(--white); }
+
+  /* Consentimento */
+  .consent-box { background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.25); border-radius: 12px; padding: 18px 20px; margin: 24px 0 8px; }
+  .consent-label { display: flex; align-items: flex-start; gap: 14px; cursor: pointer; }
+  .consent-label input[type=checkbox] { width: 20px; height: 20px; min-width: 20px; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+  .consent-text { font-size: 13px; color: #bbb; line-height: 1.65; }
+  .consent-text strong { color: var(--white); font-weight: 500; }
+
+  /* Confirmação */
+  .confirmacao { display: none; text-align: center; padding: 40px 0; }
+  .confirmacao.show { display: block; }
+  .check-circle { width: 80px; height: 80px; border-radius: 50%; background: rgba(201,168,76,.1); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; }
+  .confirmacao h2 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 2px; margin-bottom: 12px; }
+  .confirmacao h2 span { color: var(--gold); }
+  .confirmacao p { font-size: 15px; color: var(--gray); line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
+  .confirmacao p strong { color: var(--white); }
+  .num-candidatura { background: var(--dark2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 24px; display: inline-block; margin-bottom: 28px; }
+  .num-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .num-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); letter-spacing: 3px; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .container > * { animation: fadeUp .5s ease both; }
+
+  @media(max-width:600px) {
+    .container { padding: 40px 20px 60px; justify-content: flex-start; }
+    .logo-bar { margin-bottom: 36px; }
+    .logo-bar img { height: 36px; }
+    .evento-titulo { font-size: clamp(38px, 10vw, 52px); }
+    .evento-data { font-size: 13px; gap: 3px; }
+    .sessoes-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .sessao-card { padding: 20px 14px; gap: 12px; }
+    .sessao-idade { font-size: 34px; }
+    .sessao-idade .anos { font-size: 18px; }
+    .sessao-nome { font-size: 11px; letter-spacing: .5px; }
+    .sessao-horario { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="logo-bar">
+    <a href="index.html"><img src="logo.png" alt="ELEVATE" /></a>
+  </div>
+
+  <!-- PÁGINA 0 — ESCOLHA DE SESSÃO -->
+  <div id="page-0">
+    <div class="evento-header">
+      <div class="evento-label">Inscrição no Evento</div>
+      <div class="evento-titulo">
+        <div class="cidade">LISBOA</div>
+        <div class="data">14 DE JUNHO</div>
+      </div>
+      <div class="evento-divider"></div>
+      <div class="evento-data">
+        <strong>Complexo Desportivo Carlos Queiroz</strong>
+        <div class="evento-dot"></div>
+        <span>Lisboa, Portugal</span>
+      </div>
+    </div>
+
+    <p class="sessoes-titulo">Selecciona a tua sessão</p>
+
+    <div class="sessoes-grid">
+      <div class="sessao-card" onclick="escolherSessao('manha')">
+        <div class="sessao-idade">14-16 <span class="anos">anos</span></div>
+        <div>
+          <div class="sessao-nome">Sessão Manhã</div>
+          <div class="sessao-horario">10h00<span class="sep">—</span>13h00</div>
+        </div>
+      </div>
+
+      <div class="sessao-card" onclick="escolherSessao('tarde')">
+        <div class="sessao-idade">17-19 <span class="anos">anos</span></div>
+        <div>
+          <div class="sessao-nome">Sessão Tarde</div>
+          <div class="sessao-horario">15h00<span class="sep">—</span>18h00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS (ocultos até seleccionar sessão) -->
+  <div class="steps" id="steps" style="display:none;">
+    <div class="step active" id="step-1"><div class="step-circle">1</div><div class="step-label">Atleta</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step-2"><div class="step-circle">2</div><div class="step-label">Posições</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step-3"><div class="step-circle">3</div><div class="step-label">Contacto</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step-4"><div class="step-circle">4</div><div class="step-label">Plano</div></div>
+  </div>
+
+  <!-- PÁGINA 1 -->
+  <div class="form-page" id="page-1">
+    <div class="sessao-badge" id="sessao-badge">🌅 Sessão Manhã · 14-16 anos</div>
+    <div class="section-label">Dados do Atleta</div>
+    <div class="field">
+      <label>Nome completo do atleta <span class="req">*</span></label>
+      <input type="text" id="nome" placeholder="Ex: João Silva">
+      <div class="error-msg" id="err-nome">Por favor preenche o nome do atleta.</div>
+    </div>
+    <div class="field">
+      <label>Data de nascimento <span class="req">*</span></label>
+      <input type="date" id="nascimento">
+      <div class="field-hint" id="hint-nasc">Sessão Manhã: atletas entre os 14 e os 16 anos.</div>
+      <div class="error-msg" id="err-nasc">Por favor indica a data de nascimento.</div>
+    </div>
+    <div class="field">
+      <label>Clube actual <span class="opt">(opcional)</span></label>
+      <input type="text" id="clube" placeholder="Se não tiveres clube, deixa em branco">
+    </div>
+    <button class="btn-next" onclick="goTo(2)">Continuar →</button>
+  </div>
+
+  <!-- PÁGINA 2 -->
+  <div class="form-page" id="page-2">
+    <div class="section-label">Posições em Campo</div>
+    <div class="field">
+      <label>Posição principal <span class="req">*</span></label>
+      <select id="posicao-principal">
+        <option value="">Selecciona a tua posição principal</option>
+        <option>Guarda-Redes</option>
+        <option>Defesa Central</option>
+        <option>Defesa Lateral Direito</option>
+        <option>Defesa Lateral Esquerdo</option>
+        <option>Médio Defensivo</option>
+        <option>Médio Central</option>
+        <option>Médio Ofensivo</option>
+        <option>Extremo Direito</option>
+        <option>Extremo Esquerdo</option>
+        <option>Segundo Avançado</option>
+        <option>Avançado Centro</option>
+      </select>
+      <div class="error-msg" id="err-pos1">Por favor selecciona a posição principal.</div>
+    </div>
+    <div class="field">
+      <label>Posição secundária <span class="req">*</span></label>
+      <select id="posicao-secundaria">
+        <option value="">Selecciona a tua posição secundária</option>
+        <option>Guarda-Redes</option>
+        <option>Defesa Central</option>
+        <option>Defesa Lateral Direito</option>
+        <option>Defesa Lateral Esquerdo</option>
+        <option>Médio Defensivo</option>
+        <option>Médio Central</option>
+        <option>Médio Ofensivo</option>
+        <option>Extremo Direito</option>
+        <option>Extremo Esquerdo</option>
+        <option>Segundo Avançado</option>
+        <option>Avançado Centro</option>
+      </select>
+      <div class="field-hint">Posição onde também te sentes confortável a jogar.</div>
+      <div class="error-msg" id="err-pos2">Por favor selecciona a posição secundária.</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-prev" onclick="goTo(1)">← Voltar</button>
+      <button class="btn-next" onclick="goTo(3)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- PÁGINA 3 -->
+  <div class="form-page" id="page-3">
+    <div class="section-label">Dados de Contacto</div>
+    <div class="field">
+      <label>Nome do encarregado de educação <span class="req">*</span></label>
+      <input type="text" id="encarregado" placeholder="Ex: Maria Silva">
+      <div class="error-msg" id="err-enc">Por favor preenche o nome do encarregado.</div>
+    </div>
+    <div class="field">
+      <label>Email de contacto <span class="req">*</span></label>
+      <input type="email" id="email" placeholder="email@exemplo.com">
+      <div class="error-msg" id="err-email">Por favor indica um email válido.</div>
+    </div>
+    <div class="field">
+      <label>Telemóvel <span class="req">*</span></label>
+      <input type="tel" id="telemovel" placeholder="9XX XXX XXX">
+      <div class="error-msg" id="err-tel">Por favor indica um número de telemóvel.</div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-prev" onclick="goTo(2)">← Voltar</button>
+      <button class="btn-next" onclick="goTo(4)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- PÁGINA 4 -->
+  <div class="form-page" id="page-4">
+    <div class="section-label">Escolhe o teu plano</div>
+    <div class="plano-grid">
+      <div class="plano-card" onclick="selectPlano(this,'Básico')">
+        <div class="plano-radio"></div>
+        <div class="plano-info"><div class="plano-name">Básico</div><div class="plano-desc">Acesso ao evento</div></div>
+        <div class="plano-price">€50</div>
+      </div>
+      <div class="plano-card" onclick="selectPlano(this,'Pro')">
+        <div class="plano-radio"></div>
+        <div class="plano-info"><div class="plano-name">Pro</div><div class="plano-desc">Evento + Relatório Scout</div></div>
+        <div class="plano-price">€75</div>
+      </div>
+      <div class="plano-card" onclick="selectPlano(this,'Elevate')">
+        <div class="plano-radio"></div>
+        <div class="plano-info"><div class="plano-name">Elevate</div><div class="plano-desc">Evento + Relatório Scout + Highlights</div></div>
+        <div class="plano-price">€90</div>
+      </div>
+    </div>
+    <div class="error-msg" id="err-plano" style="margin-top:8px;">Por favor selecciona um plano.</div>
+    <div class="divider"></div>
+    <div class="consent-box">
+      <label class="consent-label">
+        <input type="checkbox" id="consentimento-gravacao">
+        <span class="consent-text">
+          <strong>Autorização de captação de imagem</strong><br>
+          Declaro que, como encarregado de educação, autorizo a captação e utilização da imagem e voz do atleta em contexto de evento desportivo, para fins de avaliação técnica, conteúdo digital e comunicação da <strong>Elevate Portugal</strong>. As imagens poderão ser publicadas nas redes sociais e plataformas digitais da Elevate Portugal. Esta autorização é condição obrigatória para participação no evento. <span style="color:var(--gold)">*</span>
+        </span>
+      </label>
+      <div class="error-msg" id="err-consentimento" style="margin-top:10px;">É necessário aceitar a autorização de captação de imagem para submeter a candidatura.</div>
+    </div>
+    <div class="nota-pagamento">
+      A inscrição não implica pagamento imediato. O pagamento só é solicitado após confirmação da vaga.
+      <strong>Se o evento não se realizar, não há qualquer custo.</strong>
+    </div>
+    <div class="btn-row">
+      <button class="btn-prev" onclick="goTo(3)">← Voltar</button>
+      <button class="btn-submit" onclick="submitForm()">Confirmar Inscrição</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMAÇÃO -->
+  <div class="confirmacao" id="confirmacao">
+    <div class="check-circle">✓</div>
+    <h2>INSCRIÇÃO<br><span>RECEBIDA!</span></h2>
+    <p>A tua inscrição foi registada com sucesso.<br>Entraremos em contacto em breve para confirmar a tua vaga e os próximos passos.<br><br>Obrigado por escolheres o ELEVATE.</p>
+    <div class="num-candidatura">
+      <div class="num-label">Nº de Inscrição</div>
+      <div class="num-val" id="num-candidatura-val">EV-0000</div>
+    </div>
+    <div style="margin-top:16px;">
+      <a href="index.html" style="font-size:13px;color:var(--gold);text-decoration:none;">Voltar ao site</a>
+    </div>
+  </div>
+
+</div>
+<script>
+  let sessaoSelecionada = '';
+  let planoSelecionado = '';
+
+  function escolherSessao(sessao) {
+    sessaoSelecionada = sessao;
+    const nascimento = document.getElementById('nascimento');
+    const hint = document.getElementById('hint-nasc');
+    const badge = document.getElementById('sessao-badge');
+
+    if (sessao === 'manha') {
+      // 14-16 anos em Junho 2025: nascidos entre Jun 2009 e Jun 2011
+      nascimento.min = '2009-01-01';
+      nascimento.max = '2011-12-31';
+      hint.textContent = 'Sessão Manhã (10h-13h): atletas com 14 a 16 anos.';
+      badge.textContent = '🌅 Sessão Manhã · 14-16 anos · 10h-13h';
+    } else {
+      // 17-19 anos em Junho 2025: nascidos entre Jun 2006 e Jun 2008
+      nascimento.min = '2006-01-01';
+      nascimento.max = '2008-12-31';
+      hint.textContent = 'Sessão Tarde (15h-18h): atletas com 17 a 19 anos.';
+      badge.textContent = '🌆 Sessão Tarde · 17-19 anos · 15h-18h';
+    }
+
+    document.getElementById('page-0').style.display = 'none';
+    document.getElementById('steps').style.display = 'flex';
+    document.getElementById('page-1').classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function selectPlano(el, nome) {
+    document.querySelectorAll('.plano-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected'); planoSelecionado = nome;
+    document.getElementById('err-plano').classList.remove('show');
+  }
+
+  function goTo(page) {
+    const cur = document.querySelector('.form-page.active');
+    if (!cur) return;
+    const curNum = parseInt(cur.id.replace('page-',''));
+    if (page > curNum && !validatePage(curNum)) return;
+    cur.classList.remove('active');
+    document.getElementById('page-'+page).classList.add('active');
+    for (let i=1; i<=4; i++) {
+      const s = document.getElementById('step-'+i);
+      s.classList.remove('active','done');
+      if (i < page) s.classList.add('done');
+      if (i === page) s.classList.add('active');
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function validatePage(page) {
+    let valid = true;
+    const show = (id, input) => { document.getElementById(id).classList.add('show'); if(input) document.getElementById(input).classList.add('error'); valid=false; };
+    const hide = (id, input) => { document.getElementById(id).classList.remove('show'); if(input) document.getElementById(input).classList.remove('error'); };
+    if (page === 1) {
+      document.getElementById('nome').value.trim() ? hide('err-nome','nome') : show('err-nome','nome');
+      document.getElementById('nascimento').value ? hide('err-nasc','nascimento') : show('err-nasc','nascimento');
+    }
+    if (page === 2) {
+      document.getElementById('posicao-principal').value ? hide('err-pos1','posicao-principal') : show('err-pos1','posicao-principal');
+      document.getElementById('posicao-secundaria').value ? hide('err-pos2','posicao-secundaria') : show('err-pos2','posicao-secundaria');
+    }
+    if (page === 3) {
+      document.getElementById('encarregado').value.trim() ? hide('err-enc','encarregado') : show('err-enc','encarregado');
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value) ? hide('err-email','email') : show('err-email','email');
+      document.getElementById('telemovel').value.trim().length >= 9 ? hide('err-tel','telemovel') : show('err-tel','telemovel');
+    }
+    return valid;
+  }
+
+  async function submitForm() {
+    if (!planoSelecionado) { document.getElementById('err-plano').classList.add('show'); return; }
+    const consentimento = document.getElementById('consentimento-gravacao').checked;
+    if (!consentimento) {
+      document.getElementById('err-consentimento').classList.add('show');
+      document.getElementById('consentimento-gravacao').closest('.consent-box').scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+    document.getElementById('err-consentimento').classList.remove('show');
+    const btn = document.querySelector('.btn-submit');
+    btn.textContent = 'A enviar...'; btn.disabled = true;
+    const numInscricao = 'EV-' + (Math.floor(Math.random()*9000)+1000);
+    const dados = {
+      numeroInscricao: numInscricao,
+      sessao: sessaoSelecionada === 'manha' ? 'Manhã · 10h-13h' : 'Tarde · 15h-18h',
+      nome: document.getElementById('nome').value.trim(),
+      nascimento: document.getElementById('nascimento').value,
+      clube: document.getElementById('clube').value.trim() || '—',
+      posicaoPrincipal: document.getElementById('posicao-principal').value,
+      posicaoSecundaria: document.getElementById('posicao-secundaria').value,
+      encarregado: document.getElementById('encarregado').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      telemovel: document.getElementById('telemovel').value.trim(),
+      plano: planoSelecionado,
+      consentimentoGravacao: 'Sim',
+      dataInscricao: new Date().toISOString()
+    };
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwGp3Et5GbubU6FiwgHFObZWIc5had0SuAlfu0ri6F3AWUCl0YWbfMMCF54ccgxE9Z4BA/exec', {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+    } catch(err) { console.log('Erro:', err); }
+    document.getElementById('num-candidatura-val').textContent = numInscricao;
+    document.getElementById('steps').style.display = 'none';
+    document.getElementById('confirmacao').classList.add('show');
+    document.querySelectorAll('.form-page').forEach(p => p.style.display = 'none');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>

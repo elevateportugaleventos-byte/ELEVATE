@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contactos | ELEVATE — Eventos de Futebol em Portugal</title>
+  <meta name="description" content="Entra em contacto com a ELEVATE Portugal. Dúvidas sobre inscrições, parcerias ou patrocínios no maior evento de futebol para jovens talentos." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://elevateportugal.pt/contactos.html" />
+  <meta property="og:title" content="Contactos | ELEVATE — Eventos de Futebol em Portugal" />
+  <meta property="og:description" content="Entra em contacto com a ELEVATE Portugal." />
+  <meta property="og:url" content="https://elevateportugal.pt/contactos.html" />
+  <meta property="og:image" content="https://elevateportugal.pt/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 110px 0 80px;
+      background: var(--dark1);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero .container { width: 100%; }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(139,105,20,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .contact-left .label { margin-bottom: 14px; }
+    .contact-left .section-title { margin-bottom: 20px; }
+    .contact-left > p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; margin-top: 36px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; }
+    .contact-item__icon {
+      width: 48px; height: 48px;
+      background: rgba(139,105,20,0.12);
+      border: 1px solid rgba(139,105,20,0.35);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-light); flex-shrink: 0;
+    }
+    .contact-item__icon svg { width: 20px; height: 20px; }
+    .contact-item__label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 3px;
+    }
+    .contact-item__value {
+      font-size: 15px; font-weight: 500; color: #fff;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .contact-item__value:hover { color: var(--gold-light); }
+
+    .contact-social { display: flex; gap: 12px; margin-top: 32px; }
+    .contact-social-link {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(139,105,20,0.35);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.2s;
+    }
+    .contact-social-link:hover {
+      background: rgba(139,105,20,0.15); color: var(--gold-light);
+      border-color: rgba(139,105,20,0.6);
+    }
+    .contact-social-link svg { width: 20px; height: 20px; }
+
+    /* Form */
+    .contact-form-wrap {
+      background: var(--dark3);
+      border: 1px solid rgba(139,105,20,0.2);
+      border-radius: 20px;
+      padding: 44px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 50px rgba(139,105,20,0.07);
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px; font-weight: 800; text-transform: uppercase;
+      margin-bottom: 6px; color: #fff;
+    }
+    .contact-form-wrap > p {
+      font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 28px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 14px; color: #fff; font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s; outline: none; box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: rgba(139,105,20,0.55); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--dark3); }
+    .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit {
+      width: 100%; background: var(--gold); color: var(--dark1);
+      border: none; border-radius: 10px; padding: 15px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 6px;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .form-submit:active { transform: translateY(0); }
+
+    /* Mobile — título em cima, form a seguir, contactos em baixo */
+    @media (max-width: 768px) {
+      .contact-hero { padding: 100px 0 80px; align-items: flex-start; }
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; align-items: start; }
+      .contact-left { display: contents; }
+      .contact-header { order: 1; }
+      .contact-right { order: 2; }
+      .contact-info { order: 3; padding-bottom: 16px; }
+      .contact-header .section-title { font-size: clamp(28px, 8vw, 40px); margin-bottom: 16px; }
+      .contact-header > p { font-size: 15px; margin-bottom: 0; line-height: 1.7; }
+      /* Contactos centrados, um por linha, alinhados */
+      .contact-items { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      .contact-item { gap: 14px; width: 240px; }
+      .contact-item__icon { width: 44px; height: 44px; border-radius: 11px; }
+      .contact-item__icon svg { width: 18px; height: 18px; }
+      .contact-item__value { font-size: 14px; }
+      .contact-item__label { font-size: 10px; margin-bottom: 5px; }
+      .contact-form-wrap { padding: 32px 24px; border-radius: 18px; }
+      .contact-form-wrap h3 { font-size: 22px; margin-bottom: 8px; }
+      .contact-form-wrap > p { margin-bottom: 28px; }
+      .contact-form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-group input, .form-group textarea, .form-group select { font-size: 14px; padding: 13px 15px; }
+      .form-group label { font-size: 11px; }
+      .form-group { margin-bottom: 16px; }
+      .form-group textarea { min-height: 100px; }
+      .form-submit { font-size: 13px; padding: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <ul class="nav__links nav__links--left">
+        <li><a href="index.html#sobre">PROJETO</a></li>
+        <li><a href="index.html#evento">EVENTO</a></li>
+        <li><a href="index.html#para-quem">PARA QUEM</a></li>
+        <li><a href="contactos.html" style="color: var(--gold-light);">CONTACTOS</a></li>
+      </ul>
+      <a href="index.html" class="nav__logo">
+        <img src="logo.png" alt="ELEVATE" />
+      </a>
+      <ul class="nav__links nav__links--right">
+        <li><a href="inscricao.html" class="nav__cta">Inscreve-te</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html#sobre" class="mobile-link">PROJETO</a></li>
+      <li><a href="index.html#evento" class="mobile-link">EVENTO</a></li>
+      <li><a href="index.html#para-quem" class="mobile-link">PARA QUEM</a></li>
+      <li><a href="contactos.html" class="mobile-link" style="color: var(--gold-light);">CONTACTOS</a></li>
+      <li><a href="inscricao.html" class="mobile-link">Inscreve-te</a></li>
+    </ul>
+  </div>
+
+  <!-- CONTACTOS -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- ESQUERDA -->
+        <div class="contact-left">
+          <div class="contact-header">
+            <p class="label">Contactos</p>
+            <h2 class="section-title">
+              FALA<br />
+              <em>CONNOSCO</em>
+            </h2>
+            <p>Tens alguma dúvida sobre o evento, inscrições ou parcerias?<br />Entra em contacto e respondemos o mais breve possível.</p>
+          </div>
+
+          <div class="contact-info">
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <p class="contact-item__label">Email</p>
+                  <a href="mailto:elevateportugal.eventos@gmail.com" class="contact-item__value">elevateportugal.eventos@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                </div>
+                <div>
+                  <p class="contact-item__label">Telefone</p>
+                  <a href="tel:+351915444353" class="contact-item__value">915 444 353</a>
+                </div>
+              </div>
+
+              <div class="contact-item contact-item--location">
+                <div class="contact-item__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <p class="contact-item__label">Localização</p>
+                  <span class="contact-item__value">Lisboa, Portugal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <a href="https://www.instagram.com/elevateportugal.ev/" target="_blank" aria-label="Instagram" class="contact-social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@elevate.portugal.ev" target="_blank" aria-label="TikTok" class="contact-social-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- DIREITA — FORMULÁRIO -->
+        <div class="contact-right">
+          <div class="contact-form-wrap">
+            <h3>Envia uma Mensagem</h3>
+            <p>Respondemos em menos de 24 horas.</p>
+            <form id="contactForm">
+              <div class="contact-form-row">
+                <div class="form-group">
+                  <label>Nome</label>
+                  <input type="text" placeholder="O teu nome" required />
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" placeholder="email@exemplo.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Assunto</label>
+                <select>
+                  <option value="">Seleciona um assunto</option>
+                  <option>Inscrição no Evento</option>
+                  <option>Parceria / Patrocínio</option>
+                  <option>Imprensa / Media</option>
+                  <option>Outra questão</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Mensagem</label>
+                <textarea placeholder="Escreve a tua mensagem aqui..."></textarea>
+              </div>
+              <button type="submit" class="form-submit">Enviar Mensagem</button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="logo.png" alt="ELEVATE" class="footer__logo" />
+          <p>O evento que aproxima talento e oportunidade.</p>
+        </div>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 ELEVATE. Todos os direitos reservados.</p>
+        <p class="footer__tag">ELEVATE — Mostra o Teu Jogo.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    // Mobile menu
+    const burger = document.getElementById('navBurger');
+    const menu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => menu.classList.toggle('open'));
+    document.querySelectorAll('.mobile-link').forEach(l => {
+      l.addEventListener('click', () => menu.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
